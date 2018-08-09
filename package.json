@@ -1,0 +1,48 @@
+{
+  "name": "posenet-keypoints-normalization",
+  "version": "0.1.1",
+  "description": "posenet keypoints normalization",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix .",
+    "watch": "NODE_ENV=development parcel --open index.html ",
+    "build": "NODE_ENV=production parcel build index.html --public-url ./",
+    "clean": "rm -rf .cache dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:paulvollmer/posenet-keypoints-normalization.git"
+  },
+  "keywords": [
+    "posenet"
+  ],
+  "author": "paulvollmer",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "parcel-bundler": "~1.6.2"
+  },
+  "eslintConfig": {
+    "extends": "google",
+    "rules": {
+      "require-jsdoc": 0,
+      "valid-jsdoc": 0
+    },
+    "env": {
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    }
+  },
+  "eslintIgnore": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@tensorflow-models/posenet": "^0.2.2",
+    "@tensorflow/tfjs": "^0.12.4"
+  }
+}

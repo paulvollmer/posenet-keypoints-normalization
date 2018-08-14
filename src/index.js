@@ -1,5 +1,3 @@
-import * as posenet from '@tensorflow-models/posenet';
-
 /**
  * resize a pose to the given bounding box
  *
@@ -22,8 +20,7 @@ export function resizePose(bBox, keypoints) {
  * @param {Object} keypoints - The posenet keypoints
  * @return {Object}
  */
-export function normalizePose(keypoints) {
-  const boundingBox = posenet.getBoundingBox(keypoints);
+export function normalizePose(boundingBox, keypoints) {
   let newKeypoints = keypoints;
   for (let i = 0; i < newKeypoints.length; i++) {
     newKeypoints[i].position.x = l2normalize(newKeypoints[i].position.x,
@@ -43,4 +40,13 @@ export function normalizePose(keypoints) {
  */
 export function l2normalize(val, max, min) {
   return (val - min) / (max - min);
+}
+
+export function keypointsOneDimensional(keypoints) {
+  let oneDimensional = []
+  keypoints.forEach(keypoint => {
+    oneDimensional.push(keypoint.position.x)
+    oneDimensional.push(keypoint.position.y)
+  });
+  return oneDimensional
 }

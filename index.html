@@ -11,16 +11,22 @@
       .mdl-layout__header-row {
         background: #000;
       }
-      #data-bounding-box {
-        color: red;
+      #input {
+        width: 500px;
       }
+      /* #data-bounding-box {
+        color: red;
+      } */
       #data-original {
-        color: cyan;
+        color: #ccc;
       }
       #data-resized {
-        color: yellow;
+        color: cyan;
       }
       #data-normalized {
+        color: yellow;
+      }
+      #data-one-dimensional {
         color: #0f0;
       }
     </style>
@@ -50,11 +56,10 @@
             </div>
           </div>
           <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
+            <!-- <div class="mdl-cell mdl-cell--3-col">
               <h4>Bounding Box</h4>
               <pre id="data-bounding-box"/>
-              <canvas id="visualize" width="500" height="500"></canvas>
-            </div>
+            </div> -->
             <div class="mdl-cell mdl-cell--3-col">
               <h4>Original</h4>
               <pre id="data-original"/>
@@ -66,6 +71,10 @@
             <div class="mdl-cell mdl-cell--3-col">
               <h4>Normalized</h4>
               <pre id="data-normalized"/>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col">
+              <h4>One Dimensional</h4>
+              <pre id="data-one-dimensional"/>
             </div>
           </div>
         </div>

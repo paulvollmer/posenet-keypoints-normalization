@@ -1,6 +1,6 @@
 import * as posenet from '@tensorflow-models/posenet';
-import {resizePose, normalizePose} from './src/index';
-import {drawPose} from 'posenet-keypoints-viewer'
+import {resizePose, normalizePose, keypointsOneDimensional} from './src/index';
+import {renderToCanvas} from 'posenet-keypoints-viewer'
 
 // settings
 const imageScaleFactor = 0.5;
@@ -15,28 +15,23 @@ function main() {
   })
   .then((pose) => {
     document.getElementById('data-original').innerHTML = JSON.stringify(pose, '', '  ');
+    renderToCanvas('visualize', pose.keypoints, 500, 500, 3, 1, '#222')
 
     const boundingBox = posenet.getBoundingBox(pose.keypoints);
-    document.getElementById('data-bounding-box').innerHTML = JSON.stringify(boundingBox, '', '  ');
+    // document.getElementById('data-bounding-box').innerHTML = JSON.stringify(boundingBox, '', '  ');
 
     const poseResized = resizePose(boundingBox, pose.keypoints)
     document.getElementById('data-resized').innerHTML = JSON.stringify(poseResized, '', '  ');
 
-    const poseNormalized = normalizePose(poseResized)
+    const poseNormalized = normalizePose(posenet.getBoundingBox(poseResized), poseResized)
     document.getElementById('data-normalized').innerHTML = JSON.stringify(poseNormalized, '', '  ');
 
-    // const canvas = document.getElementById('visualize');
-    // let ctx = canvas.getContext('2d');
-    // // draw the background
-    // ctx.fillStyle = '#ccc';
-    // ctx.fillRect(0, 0, 500, 500);
-    // // draw the pose
-    //
-    // console.log(pose);
-    // drawPose(ctx, pose.keypoints);
-
+    const poseOneDimensionalArray = keypointsOneDimensional(poseNormalized)
+    document.getElementById('data-one-dimensional').innerHTML = JSON.stringify(poseOneDimensionalArray, '', '  ');
   })
 }
+
+
 
 window.onload = function() {
   main()

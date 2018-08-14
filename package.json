@@ -1,6 +1,6 @@
 {
   "name": "posenet-keypoints-normalization",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "posenet keypoints normalization",
   "main": "src/index.js",
   "scripts": {
@@ -26,10 +26,6 @@
   },
   "eslintConfig": {
     "extends": "google",
-    "rules": {
-      "require-jsdoc": 0,
-      "valid-jsdoc": 0
-    },
     "env": {
       "es6": true
     },
@@ -43,6 +39,7 @@
   ],
   "dependencies": {
     "@tensorflow-models/posenet": "^0.2.2",
-    "@tensorflow/tfjs": "^0.12.4"
+    "@tensorflow/tfjs": "^0.12.4",
+    "posenet-keypoints-viewer": "paulvollmer/posenet-keypoints-viewer#0.2.0"
   }
 }
